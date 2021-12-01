@@ -1,0 +1,68 @@
+{% extends 'seller_header.html' %}
+{% load static %}`
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+
+<body>
+					
+					<div class="recommended_items"><!--recommended_items-->
+						<h2 class="title text-center">Latest clothes</h2>
+
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="item active">
+									<div class="col-sm-4">
+										<div class="box">
+											<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="{{cloth.cloth_image.url}}" alt="" />
+
+													 <div class="detail-box">
+										                <h6>
+										                  {{cloth.cloth_brand}}
+										                </h6>
+										                <h6>
+										                  Price:
+										                  <span>
+										                    {{cloth.cloth_price}}
+										                  </span>
+										                </h6>
+										              </div>
+										              <div class="detail-box">
+										                <h6>
+										                  Description : {{cloth.cloth_desc}}
+										                </h6>
+										              </div>
+
+													
+
+													<button type="button" class="btn btn-primary">NEW</button>
+												</div>
+												  <h5>
+									                  <a href="{% url 'cloth_edit' pk=cloth.pk %}"><input type="button" name="action" value="EDIT" class=" btn-primary"></a>
+									                
+									                  <a href="{% url 'cloth_delete' pk=cloth.pk %}" style="margin-left: 250px;"><input type="button" name="action" value="DELETE" class="btn btn-danger"></a>
+									              </h5>
+												</div>
+											</div>
+											</div>
+											</a>	
+										</div>
+									</div>
+								</div>
+							</div>
+							 
+						</div>
+							
+					</div><!--/recommended_items-->
+		<div>
+			<button type="submit" class="btn btn-primary">VIEW ALL</button>
+		</div>
+</body>
+</html>
+{% endblock %}

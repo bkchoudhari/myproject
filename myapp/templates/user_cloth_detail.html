@@ -1,0 +1,88 @@
+{% extends 'header.html' %}
+{% load static %}`
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+
+<body>
+					
+					<div class="recommended_items"><!--recommended_items-->
+						<h2 class="title text-center">Latest clothes</h2>
+
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="item active">
+									<div class="col-sm-4">
+										<div class="box">
+											<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="{{cloth.cloth_image.url}}" alt="" />
+
+													 <div class="detail-box">
+										                <h6>
+										                  {{cloth.cloth_brand}}
+										                </h6>
+										                <h6>
+										                  Price:
+										                  <span>
+										                    {{cloth.cloth_price}}
+										                  </span>
+										                </h6>
+										              </div>
+										              <div class="detail-box">
+										                <h6>
+										                  Description : {{cloth.cloth_desc}}
+										                </h6>
+										              </div>
+										              <div class="detail-box">
+										                <h6>
+										                  seller : {{cloth.cloth_seller}}
+										                </h6>
+										              </div>
+
+
+													
+
+													<button type="button" class="btn btn-primary">NEW</button>
+												</div>
+														
+												</div>
+												</div>
+												  <h5>
+												  		{% if cart_flag %}
+														<a href="{% url 'remove_from_cart' pk=cloth.pk %}"><button type="button" class="btn btn-default remove- from-cart"><i class="fa fa-shopping-cart"></i>remove from cart</button></a>
+												  		{% else %}
+												  		<a href="{% url 'add_to_Cart' pk=cloth.pk %}"><button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button></a>
+												  		{% endif %}
+
+									                  {% if wishlist_flag %}
+														<a href="{% url 'remove_from_wishlist' pk=cloth.pk %}"><input type="button" name="action" value="REMOVE FROM WISHLIST" class=" btn btn-danger"></a>
+
+									                  {% else %}
+
+									                   <a href="{% url 'add_to_wishlist' pk=cloth.pk %}"><input type="button" name="action" value="ADD TO WISHLIST" class=" btn-primary"></a>
+									                  {% endif %}
+									                  
+									              </h5>
+												</div>
+											</div>
+											</div>
+											</a>	
+										</div>
+									</div>
+								</div>
+							</div>
+							 
+						</div>
+							
+					</div><!--/recommended_items-->
+		<div>
+			<button type="submit" class="btn btn-primary">VIEW ALL</button>
+		</div>
+</body>
+</html>
+{% endblock %}

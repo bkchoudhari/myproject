@@ -1,0 +1,54 @@
+{% extends 'seller_header.html' %}
+{% load static %}`
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head><
+
+<body>
+	<section id="form"><!--form-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="Add_clothes"><!--login form-->
+						<!--add_clothes-->
+						<h2>add_clothes</h2>
+						{% if msg %}
+						   {{msg}}
+						 {% endif %}  
+						<form action="{% url 'add_clothes' %}" method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							
+							<div>
+								<select name="cloth_brand" >
+								<option>---Select Brand---</option>
+								<option value="killer">KILLER</option>
+								<option value="cambridge">CAMBRIDGE</option>
+								<option value="disel">DISEL</option>	
+								</select>
+							</div>
+							
+							<br>
+							<input type="text" placeholder="Price" name="cloth_price" />
+							<br>
+							<input type="file" name="cloth_image" />
+							<br>
+							<textarea name="cloth_desc" placeholder="cloth_Discriptiopn" rows="5" cols="25"></textarea>
+							<br>
+							<div>
+							<button type="submit" class="btn btn-default">ADD_CLOTH</button>
+							</div>
+						</form>
+					</div><!--add_cloth-->
+				</div>
+			</div>
+		</div>
+	</section><!--/form-->
+	
+	
+	
+</body>
+</html>
+{% endblock %}

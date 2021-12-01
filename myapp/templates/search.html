@@ -1,0 +1,70 @@
+{% extends 'header.html' %}
+{% load static %}`
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+
+<body>
+					
+					<div class="recommended_items"><!--recommended_items-->
+						<h2 class="title text-center">Search clothes</h2>
+						{% if msg %}
+						  {{msg}}
+						 {% endif %}
+						 <div >
+						 	<form name="Search" method="post" action="{% url 'search' %}">
+						 		{% csrf_token %}
+						 		<input type="text" name="Search_cloth">
+						 		<input type="submit" name="action" value="Search" class="btn btn-primary">
+						 
+						 	</form>
+						 </div> 	
+
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="item active">
+									{% for i in all_cloth %}
+									<div class="col-sm-4">
+										<div class="box">
+											<a href="{% url 'user_cloth_detail' pk=i.pk %}">
+											<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="{{i.cloth_image.url}}" alt="" />
+													 <div class="detail-box">
+										                <h6>
+										                  {{i.cloth_brand}}
+										                </h6>
+										                <h6>
+										                  Price:
+										                  <span>
+										                    {{i.cloth_price}}
+										                  </span>
+										                </h6>
+										              </div>
+									
+												</div>
+												<div class="btn btn-primary">
+													<span>
+														New
+													</span>
+												</div>
+											</div>
+										</div>
+									</a>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+							 
+						</div>
+							
+					</div><!--/recommended_items-->
+	
+</body>
+</html>
+{% endblock %}
